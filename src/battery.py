@@ -37,7 +37,7 @@ Current Charge: {self.current_capacity} MW
     def logic(self,row : pd.Series):
         if row.timestamp.time() >= dt.time(11,0,0) and row.timestamp.time() <= dt.time(14,0,0):
             mw = -self.charge(self.charge_rate/20)
-        elif row.timestamp.time() >= dt.time(17,0,0) and row.timestamp.time() <= dt.time(19,0,0):
+        elif row.timestamp.time() >= dt.time(16,0,0) and row.timestamp.time() <= dt.time(20,0,0):
             mw = self.dispatch(self.dispatch_rate/20)
         else:
             mw = 0
