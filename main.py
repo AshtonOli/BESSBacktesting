@@ -2,7 +2,7 @@ from synthetic_data.gen_synethic_spot_data import generate_nsw_energy_data,displ
 import datetime as dt
 from src.battery import Battery
 from src.util import parse_json,dollar_format
-
+from src.visualise import display_data
 
 def main() -> None:
     #Parse config & params
@@ -23,8 +23,12 @@ def main() -> None:
         df.loc[i,bess.name + "_dispatch"] = bess.logic(row)
         df.loc[i,bess.name + "_cost"] = row.spot_price_aud_mwh * df.loc[i,bess.name + "_dispatch"]
         df.loc[i,bess.name + "_capacity"] = bess.current_capacity
+    
     print("======= Analysis =========")
     print(f"Total money made by battery: {dollar_format(df[bess.name + '_cost'].sum())}")
     print(f"Average energy of {bess.name} : {df[bess.name + '_capacity'].mean()} MW")
+
+    display_data(df)
+
 if __name__ == '__main__':
     main()
