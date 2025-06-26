@@ -1,0 +1,10 @@
+{
+    "battery" : 
+        {
+            "name" : "BESS1",
+            "capacity" : 200,
+            "charge_rate" : 100,
+            "dispatch_rate" : 100
+        }
+    
+}
